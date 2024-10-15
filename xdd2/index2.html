@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сообщение для тебя</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+        body {
+            font-family: 'Pacifico', cursive;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FAD0C4 0%, #FFD1FF 100%);
+            text-align: center;
+        }
+
+        #happinessButton {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            background-color: #FFC0CB;
+            color: white;
+            font-size: 20px;
+            /* Увеличенный размер шрифта */
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            font-family: 'Pacifico', cursive;
+            /* Изменение шрифта кнопки */
+        }
+
+        #happinessButton:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        #contentDisplay {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            margin: 20px;
+            padding: 20px;
+            font-size: 30px;
+            /* Увеличенный размер шрифта */
+            color: #333;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+            background-color: #FFF0F5;
+            width: 90%;
+            max-width: 600px;
+            overflow: hidden;
+            font-family: 'Pacifico', cursive;
+            /* Использование шрифта Great Vibes для текста */
+        }
+
+        #contentDisplay img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <button id="happinessButton">Нажми меня</button>
+    <div id="contentDisplay">Твои сообщения и изображения появятся здесь...</div>
+
+    <script>
+        let content = [{
+                type: "text",
+                data: "Ты мое солнце в пасмурный день."
+            },
+            {
+                type: "text",
+                data: "Я люблю тебя больше кириешек."
+            },
+            {
+                type: "text",
+                data: "Я всегда рад твоему приезду!"
+            },
+            {
+                type: "text",
+                data: "Твой карри самый лучший в мире",
+            },
+            {
+                type: "text",
+                data: "Я жду тебя каждые выходные",
+            },
+            {
+                type: "text",
+                data: "Если бы я был пуджом, я бы хукал только тебя",
+            },
+            {
+                type: "text",
+                data: "Ты лучик счастья среди нудных созвонов",
+            },
+            {
+                type: "text",
+                data: "Твои рисуночки самые милые",
+            },
+            {
+                type: "text",
+                data: "Я бы любил тебя даже если бы ты была компьютерной мышкой",
+            },
+            {
+                type: "text",
+                data: "Я люблю смотреть твои тиктоки, присылай их чаще",
+            },
+            {
+                type: "text",
+                data: "С тобой, я бы посмотрел российский сериал",
+            },
+            {
+                type: "text",
+                data: "Сериалы с тобой намного интереснее",
+            },
+            {
+                type: "text",
+                data: "It Takes Two мы вряд ли пройдём, у меня пропал vibe",
+            },
+            {
+                type: "text",
+                data: "Я привязался к тебе, как IO",
+            },
+            {
+                type: "text",
+                data: "Люблю кушать картошку вместе с тобой",
+            },
+            {
+                type: "text",
+                data: "Давай закажем роллы в Рис и Рыба",
+            },
+            {
+                type: "text",
+                data: "Давай закажем роллы в Рис и Рыба",
+            },
+        ];
+
+        let images = [
+            "https://sandbox.1bitvrn36.ru/local/keft/1.png",
+            "https://sandbox.1bitvrn36.ru/local/keft/2.png",
+            "https://sandbox.1bitvrn36.ru/local/keft/3.png",
+            "https://sandbox.1bitvrn36.ru/local/keft/4.png",
+            "https://sandbox.1bitvrn36.ru/local/keft/5.gif",
+            "https://sandbox.1bitvrn36.ru/local/keft/6.png",
+            "https://sandbox.1bitvrn36.ru/local/keft/7.png",
+            "https://sandbox.1bitvrn36.ru/local/keft/8.png",
+            "https://sandbox.1bitvrn36.ru/local/keft/10.png",
+            "https://sandbox.1bitvrn36.ru/local/keft/11.gif",
+            "https://sandbox.1bitvrn36.ru/local/keft/12.gif",
+            "https://sandbox.1bitvrn36.ru/local/keft/13.gif",
+            "https://sandbox.1bitvrn36.ru/local/keft/14.gif",
+            "https://sandbox.1bitvrn36.ru/local/keft/15.gif",
+            "https://sandbox.1bitvrn36.ru/local/keft/16.gif",
+            "https://sandbox.1bitvrn36.ru/local/keft/17.gif",
+            "https://sandbox.1bitvrn36.ru/local/keft/18.gif",
+
+
+        ];
+
+        let button = document.querySelector("#happinessButton");
+        let contentDisplay = document.querySelector("#contentDisplay");
+
+        let availableIndexes = [...content.keys()]; // Индексы доступного текстового контента
+        let availableImageIndexes = [...images.keys()]; // Индексы доступных изображений
+        let usedImageIndexes = []; // Использованные индексы изображений
+
+        button.addEventListener("click", function() {
+            if (availableIndexes.length === 0) {
+                availableIndexes = [...content.keys()]; // Сбросить доступные индексы текстового контента
+            }
+
+            let randomContentIndex = Math.floor(Math.random() * availableIndexes.length);
+            let contentIndex = availableIndexes.splice(randomContentIndex, 1)[0];
+            let item = content[contentIndex];
+            let contentHtml = `<p>${item.data}</p>`;
+
+            if (item.type === "text") {
+                if (availableImageIndexes.length === 0) {
+                    availableImageIndexes = [...images.keys()]; // Сбросить доступные индексы изображений
+                    usedImageIndexes = []; // Очистить массив использованных индексов изображений
+                }
+
+                let randomImageIndex = Math.floor(Math.random() * availableImageIndexes.length);
+                let imageIndex = availableImageIndexes.splice(randomImageIndex, 1)[0];
+                usedImageIndexes.push(imageIndex);
+
+                contentHtml += `<img src="${images[imageIndex]}" alt="Изображение">`;
+            } else if (item.type === "combo") {
+                contentHtml += `<img src="${item.imageUrl}" alt="Изображение">`;
+            }
+
+            contentDisplay.innerHTML = contentHtml;
+            contentDisplay.style.opacity = 1;
+        });
+    </script>
+
+</body>
+
+</html>
